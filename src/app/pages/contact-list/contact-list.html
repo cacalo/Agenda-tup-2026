@@ -1,0 +1,24 @@
+<!-- <p>{{nombre}} {{apellido}}</p>
+
+@if(presente === true){
+    <p>Presente</p>
+} -->
+<h1>Mis contactos</h1>
+
+
+@for (item of alumnos; track $index) {
+    <div>
+        <span>
+            <img src="" alt="Foto del contacto">
+        </span>
+        <span>
+            Nombre: {{item}}
+        </span>
+        <span>
+            Teléfono: 123456789
+        </span>
+    </div>
+}
+
+
+<button (click)="agregarAlumno()" [disabled]="alumnos.length>5">Agregar contacto</button>
