@@ -1,25 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterLink } from "@angular/router";
+import { Contact } from '../../interfaces/contact';
+import { ContactsService } from '../../services/contactsService';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-contact-list',
   styleUrl: './contact-list.scss',
   templateUrl: './contact-list.html',
 })
 export class ContactList {
 
-  nombre = "Gonzalo";
-  apellido = "Bechara";
-  presente = false;
-  alumnos = ['Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro','Juan', 'Maria','Pedro'];
+  contactsService = inject(ContactsService);
 
-  agregarAlumno(){
-    const nuevaVariable = 10;
-    if(this.alumnos.length < 6){
-      this.alumnos.push('Alumno nuevo '+(this.alumnos.length+1))
-      console.log(this.alumnos)
-    }
-  }
 
+ 
 
 }
