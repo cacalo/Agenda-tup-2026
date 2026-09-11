@@ -45,7 +45,7 @@ contactList:Contact[] = [
   ]
 
 
- agregarAlumno(){
+ agregarContacto(){
     this.contactList.push({
       id: '2',
       nombre: '44567',

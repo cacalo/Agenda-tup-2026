@@ -1,0 +1,16 @@
+.contacto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 50px;
+    width: 100%;
+  }
+  div{
+    display: flex;
+    gap: 1rem;
+  }
+}

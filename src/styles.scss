@@ -1,13 +1,88 @@
+@use 'sass:color';
 @import url("./../public/styles/reset.scss");
 
-$color-principal: #3498db;
-$color-secundario: #2ecc71;
-$color-texto: #111111;
-$color-fondo: #f5f5f5;
+$color-principal: #34dbc2;
+$color-principal-fuerte:  color.adjust($color-principal, $lightness: -10%);
+$color-secundario: #3490db;
+$color-texto: #eeeeee;
+$color-texto-invertido: #1d1d1d;
+$color-fondo: #121212ab;
+$color-fondo-secundario: #444444ab;
+$ancho-chico: 800px;
 
 
 body{
   background-color: $color-fondo;
   color: $color-texto;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $color-fondo-secundario;
+  padding: 1rem  2rem;
+  >div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+button, .button{
+  background-color: $color-principal;
+  color: $color-texto-invertido;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  &:hover {
+    background-color: $color-principal-fuerte;
+  }
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+}
+
+.card {
+  background-color: $color-fondo-secundario;
+  border: 1px solid $color-principal;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 3px;
+}
+
+.fab{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $color-principal;
+  color: $color-texto-invertido;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+}
+
+.chico{
+  max-width: $ancho-chico;
+}
+
+main{
+  max-width: $ancho-chico;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

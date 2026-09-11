@@ -1,29 +1,27 @@
-<!-- <p>{{nombre}} {{apellido}}</p>
-
-@if(presente === true){
-    <p>Presente</p>
-} -->
-<h1>Mis contactos</h1>
-
-
-@for (contacto of contactsService.contactList; track $index) {
+<header>
+  <h1>Mis contactos</h1>
+  <button>Cerrar sesión</button>
+</header>
+<main>
+  @for (contacto of contactsService.contactList; track $index) {
+  <div class="contacto card">
+    <a [routerLink]="['/contacts',contacto.id]">
+      <span>
+        <img src="img/person.png" alt="Foto del contacto" width="50px">
+      </span>
+      <span>
+        {{contacto.nombre}}
+      </span>
+      <span>
+        {{contacto.numeroTelefono}}
+      </span>
+    </a>
     <div>
-        <a [routerLink]="['/contacts',contacto.id]">
-            <span>
-                <img src="" alt="Foto del contacto">
-            </span>
-            <span>
-                Nombre: {{contacto.nombre}}
-            </span>
-            <span>
-                Teléfono: {{contacto.numeroTelefono}}
-            </span>
-            <span>
-                Dirección: {{contacto.direccion}}
-            </span>
-        </a>
+      <button>Editar</button>
+      <button>Eliminar</button>
     </div>
-}
+  </div>
+  }
+  <button class="fab" (click)="contactsService.agregarContacto( )" [disabled]="contactsService.contactList.length>5">+</button>
+</main>
 
-
-<button (click)="contactsService.agregarAlumno( )" [disabled]="contactsService.contactList.length>5">Agregar contacto</button>

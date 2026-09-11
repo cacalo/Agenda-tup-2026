@@ -1,5 +1,15 @@
 $gap: 10px;
 
+h1{
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h3{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
 section{
   margin: auto;
   text-align: center;
@@ -25,4 +35,13 @@ form>div{
   grid-template-columns: 1fr 1fr;
   gap: $gap; 
   text-align: right;
+}
+
+.card {
+  margin: auto;
+}
+
+a{
+  font-weight: bold;
+  text-decoration: underline;
 }

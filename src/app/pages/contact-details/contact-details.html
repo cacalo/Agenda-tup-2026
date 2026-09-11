@@ -1,4 +1,21 @@
-<h1>ID actual: {{id()}}</h1>
-<h1>Nombre y Apellido contacto {{contacto?.nombre}}</h1>
-<p>Telefono</p> 
-<p>Dirección</p>
+<header>
+  <div>
+    <a class="button" routerLink="/contacts">⬅</a>
+    <h1>{{contacto?.nombre}}</h1>
+  </div>
+  <button>Cerrar sesión</button>
+</header>
+<main class="card">
+  <div>
+    <p>Telefono</p> 
+    <p>{{contacto?.numeroTelefono}}</p>
+  </div>
+  <div>
+    <p>Email</p>
+    <p>{{contacto?.email}}</p>
+  </div>
+  <div>
+    <p>Dirección</p>
+    <p>{{contacto?.direccion}}</p>
+  </div>
+</main>

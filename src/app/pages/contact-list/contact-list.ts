@@ -14,6 +14,4 @@ export class ContactList {
   contactsService = inject(ContactsService);
 
 
- 
-
 }
