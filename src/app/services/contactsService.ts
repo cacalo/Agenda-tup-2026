@@ -45,13 +45,15 @@ contactList:Contact[] = [
   ]
 
 
-  agregarContacto(){
+  agregarContacto(nuevoContacto:Contact){
+    const nuevoId = this.contactList.length.toString();
     this.contactList.push({
-      id: '2',
-      nombre: '44567',
-      apellido: '4567',
-      numeroTelefono: '4567'
+      id: nuevoId,
+      nombre: nuevoContacto.nombre,
+      apellido: nuevoContacto.apellido,
+      numeroTelefono: nuevoContacto.numeroTelefono
     })
+    return nuevoId;
     console.log(this.contactList)
   }
 

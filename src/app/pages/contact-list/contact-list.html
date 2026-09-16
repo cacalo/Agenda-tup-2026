@@ -10,7 +10,7 @@
         <img src="img/person.png" alt="Foto del contacto" width="50px">
       </span>
       <span>
-        {{contacto.nombre}}
+        {{contacto.nombre}} {{contacto.apellido}}
       </span>
       <span>
         {{contacto.numeroTelefono}}
@@ -22,6 +22,6 @@
     </div>
   </div>
   }
-  <button class="fab" (click)="contactsService.agregarContacto( )" [disabled]="contactsService.contactList.length>5">+</button>
+  <a class="fab" routerLink="/contacts/create">+</a>
 </main>
 
