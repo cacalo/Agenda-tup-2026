@@ -20,7 +20,7 @@
   </div>
   @if(contacto){
     <div>
-      <button>Editar</button>
+      <a class="button" [routerLink]="['/contacts',contacto.id,'edit']">Editar</a>
       <button (click)="eliminarContacto(contacto.id)">Eliminar</button>
     </div>
   }
