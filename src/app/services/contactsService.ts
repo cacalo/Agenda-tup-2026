@@ -45,7 +45,7 @@ contactList:Contact[] = [
   ]
 
 
- agregarContacto(){
+  agregarContacto(){
     this.contactList.push({
       id: '2',
       nombre: '44567',
@@ -59,6 +59,10 @@ contactList:Contact[] = [
 getContactById(id:string){
   const contactoEncontrado = this.contactList.find(contact => contact.id === id);
   return contactoEncontrado;
+}
+
+deleteContact(id:string){
+  this.contactList = this.contactList.filter(c => c.id !== id);
 }
 
 
