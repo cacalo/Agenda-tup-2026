@@ -67,5 +67,12 @@ deleteContact(id:string){
   this.contactList = this.contactList.filter(c => c.id !== id);
 }
 
+editContact(contact:Contact){
+  this.contactList = this.contactList.map(c => {
+    if(c.id === contact.id) return contact;
+    return c
+  });
+}
+
 
 }

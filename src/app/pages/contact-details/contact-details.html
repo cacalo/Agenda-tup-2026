@@ -18,4 +18,10 @@
     <p>Dirección</p>
     <p>{{contacto?.direccion}}</p>
   </div>
+  @if(contacto){
+    <div>
+      <button>Editar</button>
+      <button (click)="eliminarContacto(contacto.id)">Eliminar</button>
+    </div>
+  }
 </main>
