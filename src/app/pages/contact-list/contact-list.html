@@ -1,24 +1,24 @@
 <header>
   <h1>Mis contactos</h1>
-  <button>Cerrar sesión</button>
+  <button (click)="authService.logout()">Cerrar sesión</button>
 </header>
 <main>
-  @for (contacto of contactsService.contactList; track $index) {
+  @for (contacto of contactsService.contactList(); track $index) {
   <div class="contacto card">
-    <a [routerLink]="['/contacts',contacto.Id]">
+    <a [routerLink]="['/contacts',contacto.id]">
       <span>
         <img src="img/person.png" alt="Foto del contacto" width="50px">
       </span>
       <span>
-        {{contacto.FirstName}} {{contacto.LastName}}
+        {{contacto.firstName}} {{contacto.lastName}}
       </span>
       <span>
-        {{contacto.Number}}
+        {{contacto.number}}
       </span>
     </a>
     <div>
-      <a class="button" [routerLink]="['/contacts',contacto.Id,'edit']">Editar</a>
-      <button (click)="eliminarContacto(contacto.Id)">Eliminar</button>
+      <a class="button" [routerLink]="['/contacts',contacto.id,'edit']">Editar</a>
+      <button (click)="eliminarContacto(contacto.id)">Eliminar</button>
     </div>
   </div>
   }

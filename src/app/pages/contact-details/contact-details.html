@@ -1,27 +1,27 @@
 <header>
   <div>
     <a class="button" routerLink="/contacts">⬅</a>
-    <h1>{{contacto?.FirstName}}</h1>
+    <h1>{{contacto?.firstName}}</h1>
   </div>
   <button>Cerrar sesión</button>
 </header>
 <main class="card">
   <div>
-    <p>Telefono</p> 
-    <p>{{contacto?.Number}}</p>
+    <p>Telefono</p>
+    <p>{{contacto?.number}}</p>
   </div>
   <div>
     <p>Email</p>
-    <p>{{contacto?.Email}}</p>
+    <p>{{contacto?.email}}</p>
   </div>
   <div>
     <p>Dirección</p>
-    <p>{{contacto?.Address}}</p>
+    <p>{{contacto?.address}}</p>
   </div>
   @if(contacto){
     <div>
-      <a class="button" [routerLink]="['/contacts',contacto.Id,'edit']">Editar</a>
-      <button (click)="eliminarContacto(contacto.Id)">Eliminar</button>
+      <a class="button" [routerLink]="['/contacts',contacto.id,'edit']">Editar</a>
+      <button (click)="eliminarContacto(contacto.id)">Eliminar</button>
     </div>
   }
 </main>

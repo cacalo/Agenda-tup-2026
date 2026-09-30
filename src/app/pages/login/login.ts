@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { LoginForm } from '../../interfaces/login';
 import { email, form, FormField, minLength, required } from '@angular/forms/signals';
 import { Auth } from '../../services/auth';
@@ -13,6 +13,7 @@ import { Auth } from '../../services/auth';
 export class Login {
 
   authService = inject(Auth);
+  router = inject(Router)
 
 loginModel = signal<LoginForm>({
   email: "",
@@ -31,7 +32,7 @@ async login(event: Event){
 
   const result = await this.authService.login(this.loginModel());
   if(result) {
-    console.log("TE LOGUEASTE")
+    this.router.navigate(["/"]);
   } else {
     console.warn("ERROR")
   }

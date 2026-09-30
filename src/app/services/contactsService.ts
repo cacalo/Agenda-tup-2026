@@ -1,83 +1,60 @@
-import { Service } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
 import { Contact } from '../interfaces/contact';
+import { Auth } from './auth';
 
 @Service()
 export class ContactsService {
 
-contactList:Contact[] = [
-    {
-      Id: 1,
-      FirstName: 'AA',
-      LastName: "iiiii",
-      Email: 'AA@AA.com',
-      Number: '12345',
-      IsFavorite: false
-    },
-    {
-      Id: 2,
-      FirstName: 'BB',
-      LastName: "iiiii",
-      Email: 'BB@BB.com',
-      Number: '12345',
-      Address: "ABCABC",
-      IsFavorite: false
-    },
-    {
-      Id: 3,
-      FirstName: 'CC',
-      LastName: "iiiii",
-      Email: 'CC@CC.com',
-      Number: '12345',
-      Address: 'ASDFGHJ',
-      IsFavorite: false
-    },
-    {
-      Id: 4,
-      FirstName: 'DD',
-      LastName: "iiiii",
-      Email: 'DD@DD.com',
-      Number: '12345',
-      IsFavorite: false
-    },
-    {
-      Id: 5,
-      FirstName: 'EE',
-      LastName: "iiiii",
-      Email: 'EE@EE.com',
-      Number: '12345',
-      IsFavorite: false
-    }
-  ]
+authService = inject(Auth);
+
+readonly contactList = signal<Contact[]>([]);
 
 
-  agregarContacto(nuevoContacto:Contact){
-    const nuevoId = this.contactList.length;
-    this.contactList.push({
-      Id: nuevoId,
-      FirstName: nuevoContacto.FirstName,
-      LastName: nuevoContacto.LastName,
-      Number: nuevoContacto.Number,
-      IsFavorite: false
-    })
-    return nuevoId;
-    console.log(this.contactList)
-  }
+agregarContacto(nuevoContacto:Contact){
+  // const nuevoId = this.contactList.length;
+  // this.contactList.push({
+  //   id: nuevoId,
+  //   firstName: nuevoContacto.firstName,
+  //   lastName: nuevoContacto.lastName,
+  //   number: nuevoContacto.number,
+  //   isFavorite: false,
+  //   groupIds: []
+  // })
+  // return nuevoId;
+  // console.log(this.contactList)
+}
 
-  /// Busca un contacto desde un ID
+async getContacts():Promise<Contact[]>{
+  const res = await fetch("http://localhost:5000/api/contacts",{
+    method: "GET",
+    headers: {
+        Authorization: "Bearer "+this.authService.token
+    },
+    
+  })
+  if (!res.ok) return [];
+  const contactos = await res.json()
+  this.contactList.set(contactos);
+  console.log(this.contactList)
+
+  return contactos;
+}
+
+// Busca un contacto desde un ID
 getContactById(id:number){
-  const contactoEncontrado = this.contactList.find(contact => contact.Id === id);
-  return contactoEncontrado;
+  //const contactoEncontrado = this.contactList.find(contact => contact.id === id);
+  //return contactoEncontrado;
 }
 
 deleteContact(id:number){
-  this.contactList = this.contactList.filter(c => c.Id !== id);
+  //this.contactList = this.contactList.filter(c => c.id !== id);
 }
 
 editContact(contact:Contact){
-  this.contactList = this.contactList.map(c => {
-    if(c.Id === contact.Id) return contact;
-    return c
-  });
+  //this.contactList = this.contactList.map(c => {
+  //  if(c.id === contact.id) return contact;
+  //  return c
+  //});
 }
 
 

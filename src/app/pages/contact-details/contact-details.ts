@@ -18,7 +18,7 @@ export class ContactDetails implements OnInit {
   router = inject(Router)
 
   ngOnInit(): void {
-    this.contacto = this.contactsService.getContactById(this.id())
+    //this.contacto = this.contactsService.getContactById(this.id())
   }
 
   eliminarContacto(id:number){

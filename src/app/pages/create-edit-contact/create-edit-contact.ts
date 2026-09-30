@@ -4,6 +4,7 @@ import { form, FormField } from '@angular/forms/signals';
 import { ContactsService } from '../../services/contactsService';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Auth } from '../../services/auth';
 
 @Component({
   imports: [FormField],
@@ -15,21 +16,23 @@ export class CreateEditContact implements OnInit{
   ngOnInit(): void {
     if(this.id()){
       const contacto = this.contactsService.getContactById(this.id()!);
-      if(contacto) {
-        this.newContactModel.set(contacto)
-      }
+      // if(contacto) {
+      //   this.newContactModel.set(contacto)
+      // }
     }
   }
 
+  authService = inject(Auth);
   contactsService = inject(ContactsService);
   router = inject(Router)
 
   newContactModel = signal<Contact>({
-    Id: 0,
-    FirstName: '',
-    LastName: '',
-    Number: '',
-    IsFavorite: false
+    id: 0,
+    firstName: '',
+    lastName: '',
+    number: '',
+    isFavorite: false,
+    groupIds: []
   });
 
   id = input<number>();
@@ -91,7 +94,7 @@ export class CreateEditContact implements OnInit{
       title: "Contacto editado"
     });
 
-    this.router.navigate(['/contacts',this.newContactModel().Id])
+    this.router.navigate(['/contacts',this.newContactModel().id])
   }
 
 }
