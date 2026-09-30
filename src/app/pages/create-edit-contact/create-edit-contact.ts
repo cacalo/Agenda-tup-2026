@@ -25,13 +25,14 @@ export class CreateEditContact implements OnInit{
   router = inject(Router)
 
   newContactModel = signal<Contact>({
-    id: '',
-    nombre: '',
-    apellido: '',
-    numeroTelefono: ''
+    Id: 0,
+    FirstName: '',
+    LastName: '',
+    Number: '',
+    IsFavorite: false
   });
 
-  id = input<string>();
+  id = input<number>();
 
   // mostrarForm = effect(() => console.log(this.newContactModel()))
 
@@ -90,7 +91,7 @@ export class CreateEditContact implements OnInit{
       title: "Contacto editado"
     });
 
-    this.router.navigate(['/contacts',this.newContactModel().id])
+    this.router.navigate(['/contacts',this.newContactModel().Id])
   }
 
 }

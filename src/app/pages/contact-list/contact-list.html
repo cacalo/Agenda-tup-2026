@@ -5,20 +5,20 @@
 <main>
   @for (contacto of contactsService.contactList; track $index) {
   <div class="contacto card">
-    <a [routerLink]="['/contacts',contacto.id]">
+    <a [routerLink]="['/contacts',contacto.Id]">
       <span>
         <img src="img/person.png" alt="Foto del contacto" width="50px">
       </span>
       <span>
-        {{contacto.nombre}} {{contacto.apellido}}
+        {{contacto.FirstName}} {{contacto.LastName}}
       </span>
       <span>
-        {{contacto.numeroTelefono}}
+        {{contacto.Number}}
       </span>
     </a>
     <div>
-      <a class="button" [routerLink]="['/contacts',contacto.id,'edit']">Editar</a>
-      <button (click)="eliminarContacto(contacto.id)">Eliminar</button>
+      <a class="button" [routerLink]="['/contacts',contacto.Id,'edit']">Editar</a>
+      <button (click)="eliminarContacto(contacto.Id)">Eliminar</button>
     </div>
   </div>
   }

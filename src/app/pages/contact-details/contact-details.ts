@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class ContactDetails implements OnInit {
 
-  id = input.required<string>();
+  id = input.required<number>();
   contacto:Contact | undefined;
   contactsService = inject(ContactsService);
   router = inject(Router)
@@ -21,7 +21,7 @@ export class ContactDetails implements OnInit {
     this.contacto = this.contactsService.getContactById(this.id())
   }
 
-  eliminarContacto(id:string){
+  eliminarContacto(id:number){
       this.contactsService.deleteContact(id);
       Swal.mixin({
         toast: true,

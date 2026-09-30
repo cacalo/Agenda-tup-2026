@@ -6,70 +6,76 @@ export class ContactsService {
 
 contactList:Contact[] = [
     {
-      id: "1",
-      nombre: 'AA',
-      apellido: "iiiii",
-      email: 'AA@AA.com',
-      numeroTelefono: '12345',
+      Id: 1,
+      FirstName: 'AA',
+      LastName: "iiiii",
+      Email: 'AA@AA.com',
+      Number: '12345',
+      IsFavorite: false
     },
     {
-      id: "2",
-      nombre: 'BB',
-      apellido: "iiiii",
-      email: 'BB@BB.com',
-      numeroTelefono: '12345',
-      direccion: "ABCABC"
+      Id: 2,
+      FirstName: 'BB',
+      LastName: "iiiii",
+      Email: 'BB@BB.com',
+      Number: '12345',
+      Address: "ABCABC",
+      IsFavorite: false
     },
     {
-      id: "aaasfa",
-      nombre: 'CC',
-      apellido: "iiiii",
-      email: 'CC@CC.com',
-      numeroTelefono: '12345',
-      direccion: 'ASDFGHJ'
+      Id: 3,
+      FirstName: 'CC',
+      LastName: "iiiii",
+      Email: 'CC@CC.com',
+      Number: '12345',
+      Address: 'ASDFGHJ',
+      IsFavorite: false
     },
     {
-      id: "dddd",
-      nombre: 'DD',
-      apellido: "iiiii",
-      email: 'DD@DD.com',
-      numeroTelefono: '12345',
+      Id: 4,
+      FirstName: 'DD',
+      LastName: "iiiii",
+      Email: 'DD@DD.com',
+      Number: '12345',
+      IsFavorite: false
     },
     {
-      id: "eeeee",
-      nombre: 'EE',
-      apellido: "iiiii",
-      email: 'EE@EE.com',
-      numeroTelefono: '12345',
+      Id: 5,
+      FirstName: 'EE',
+      LastName: "iiiii",
+      Email: 'EE@EE.com',
+      Number: '12345',
+      IsFavorite: false
     }
   ]
 
 
   agregarContacto(nuevoContacto:Contact){
-    const nuevoId = this.contactList.length.toString();
+    const nuevoId = this.contactList.length;
     this.contactList.push({
-      id: nuevoId,
-      nombre: nuevoContacto.nombre,
-      apellido: nuevoContacto.apellido,
-      numeroTelefono: nuevoContacto.numeroTelefono
+      Id: nuevoId,
+      FirstName: nuevoContacto.FirstName,
+      LastName: nuevoContacto.LastName,
+      Number: nuevoContacto.Number,
+      IsFavorite: false
     })
     return nuevoId;
     console.log(this.contactList)
   }
 
   /// Busca un contacto desde un ID
-getContactById(id:string){
-  const contactoEncontrado = this.contactList.find(contact => contact.id === id);
+getContactById(id:number){
+  const contactoEncontrado = this.contactList.find(contact => contact.Id === id);
   return contactoEncontrado;
 }
 
-deleteContact(id:string){
-  this.contactList = this.contactList.filter(c => c.id !== id);
+deleteContact(id:number){
+  this.contactList = this.contactList.filter(c => c.Id !== id);
 }
 
 editContact(contact:Contact){
   this.contactList = this.contactList.map(c => {
-    if(c.id === contact.id) return contact;
+    if(c.Id === contact.Id) return contact;
     return c
   });
 }
